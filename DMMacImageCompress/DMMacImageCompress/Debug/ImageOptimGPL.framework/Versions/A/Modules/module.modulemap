@@ -1,0 +1,6 @@
+framework module ImageOptimGPL {
+  umbrella header "ImageOptimGPL.h"
+
+  export *
+  module * { export * }
+}
