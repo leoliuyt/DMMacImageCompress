@@ -7,20 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6B46B2E82099A61200E77FD2 /* pngquant in Resources */ = {isa = PBXBuildFile; fileRef = 6B46B2E72099A61200E77FD2 /* pngquant */; };
 		9E5D6F3C2090768400E484B4 /* fileop in Resources */ = {isa = PBXBuildFile; fileRef = 9E5D6F2A2090768300E484B4 /* fileop */; };
 		9E5D6F3F2090768400E484B4 /* jpegtran in Resources */ = {isa = PBXBuildFile; fileRef = 9E5D6F2D2090768300E484B4 /* jpegtran */; };
 		9E5D6F402090768400E484B4 /* pngcrush in Resources */ = {isa = PBXBuildFile; fileRef = 9E5D6F2E2090768300E484B4 /* pngcrush */; };
 		9E5D6F412090768400E484B4 /* optipng in Resources */ = {isa = PBXBuildFile; fileRef = 9E5D6F2F2090768300E484B4 /* optipng */; };
 		9E5D6F422090768400E484B4 /* advpng in Resources */ = {isa = PBXBuildFile; fileRef = 9E5D6F302090768300E484B4 /* advpng */; };
 		9E5D6F442090768400E484B4 /* gifsicle in Resources */ = {isa = PBXBuildFile; fileRef = 9E5D6F322090768300E484B4 /* gifsicle */; };
-		9E5D6F452090768400E484B4 /* pngquant in Resources */ = {isa = PBXBuildFile; fileRef = 9E5D6F332090768300E484B4 /* pngquant */; };
 		9E5D6F482090768400E484B4 /* zopflipng in Resources */ = {isa = PBXBuildFile; fileRef = 9E5D6F362090768300E484B4 /* zopflipng */; };
 		9E5D6F4A2090768400E484B4 /* guetzli in Resources */ = {isa = PBXBuildFile; fileRef = 9E5D6F382090768300E484B4 /* guetzli */; };
 		9E5D6F4B2090768400E484B4 /* jpegoptim in Resources */ = {isa = PBXBuildFile; fileRef = 9E5D6F392090768300E484B4 /* jpegoptim */; };
 		9E5D6F6920916EF900E484B4 /* NSImage+DM.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E5D6F6820916EF900E484B4 /* NSImage+DM.m */; };
-		9E5D6F6C2091A71A00E484B4 /* ArtImageCompressUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E5D6F6B2091A71A00E484B4 /* ArtImageCompressUtil.m */; };
-		9E5D6F722091D4F200E484B4 /* LLImageCompressOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E5D6F712091D4F200E484B4 /* LLImageCompressOperation.m */; };
-		9E5D6F762091EA5A00E484B4 /* LLImageCompressManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E5D6F752091EA5A00E484B4 /* LLImageCompressManager.m */; };
 		9ED3130720903512009BFA8D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ED3130620903512009BFA8D /* AppDelegate.m */; };
 		9ED3130A20903512009BFA8D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ED3130920903512009BFA8D /* ViewController.m */; };
 		9ED3130C20903513009BFA8D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9ED3130B20903513009BFA8D /* Assets.xcassets */; };
@@ -29,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6B46B2E72099A61200E77FD2 /* pngquant */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = pngquant; sourceTree = "<group>"; };
 		9E5D6F282090768300E484B4 /* liblibpng.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = liblibpng.dylib; sourceTree = "<group>"; };
 		9E5D6F2A2090768300E484B4 /* fileop */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = fileop; sourceTree = "<group>"; };
 		9E5D6F2D2090768300E484B4 /* jpegtran */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = jpegtran; sourceTree = "<group>"; };
@@ -37,19 +35,12 @@
 		9E5D6F302090768300E484B4 /* advpng */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = advpng; sourceTree = "<group>"; };
 		9E5D6F312090768300E484B4 /* libimageoptimjpeg.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libimageoptimjpeg.dylib; sourceTree = "<group>"; };
 		9E5D6F322090768300E484B4 /* gifsicle */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = gifsicle; sourceTree = "<group>"; };
-		9E5D6F332090768300E484B4 /* pngquant */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = pngquant; sourceTree = "<group>"; };
 		9E5D6F352090768300E484B4 /* libimagequant.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libimagequant.a; sourceTree = "<group>"; };
 		9E5D6F362090768300E484B4 /* zopflipng */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = zopflipng; sourceTree = "<group>"; };
 		9E5D6F382090768300E484B4 /* guetzli */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = guetzli; sourceTree = "<group>"; };
 		9E5D6F392090768300E484B4 /* jpegoptim */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = jpegoptim; sourceTree = "<group>"; };
 		9E5D6F6720916EF900E484B4 /* NSImage+DM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSImage+DM.h"; sourceTree = "<group>"; };
 		9E5D6F6820916EF900E484B4 /* NSImage+DM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSImage+DM.m"; sourceTree = "<group>"; };
-		9E5D6F6A2091A71A00E484B4 /* ArtImageCompressUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ArtImageCompressUtil.h; sourceTree = "<group>"; };
-		9E5D6F6B2091A71A00E484B4 /* ArtImageCompressUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ArtImageCompressUtil.m; sourceTree = "<group>"; };
-		9E5D6F702091D4F200E484B4 /* LLImageCompressOperation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LLImageCompressOperation.h; sourceTree = "<group>"; };
-		9E5D6F712091D4F200E484B4 /* LLImageCompressOperation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LLImageCompressOperation.m; sourceTree = "<group>"; };
-		9E5D6F742091EA5A00E484B4 /* LLImageCompressManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LLImageCompressManager.h; sourceTree = "<group>"; };
-		9E5D6F752091EA5A00E484B4 /* LLImageCompressManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LLImageCompressManager.m; sourceTree = "<group>"; };
 		9ED3130220903512009BFA8D /* DMMacImageCompress.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DMMacImageCompress.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9ED3130520903512009BFA8D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9ED3130620903512009BFA8D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -83,7 +74,6 @@
 				9E5D6F2F2090768300E484B4 /* optipng */,
 				9E5D6F302090768300E484B4 /* advpng */,
 				9E5D6F322090768300E484B4 /* gifsicle */,
-				9E5D6F332090768300E484B4 /* pngquant */,
 				9E5D6F352090768300E484B4 /* libimagequant.a */,
 				9E5D6F362090768300E484B4 /* zopflipng */,
 				9E5D6F382090768300E484B4 /* guetzli */,
@@ -120,6 +110,7 @@
 		9ED3130420903512009BFA8D /* DMMacImageCompress */ = {
 			isa = PBXGroup;
 			children = (
+				6B46B2E72099A61200E77FD2 /* pngquant */,
 				9E5D6F272090768300E484B4 /* Debug */,
 				9ED3130520903512009BFA8D /* AppDelegate.h */,
 				9ED3130620903512009BFA8D /* AppDelegate.m */,
@@ -127,12 +118,6 @@
 				9ED3130920903512009BFA8D /* ViewController.m */,
 				9E5D6F6720916EF900E484B4 /* NSImage+DM.h */,
 				9E5D6F6820916EF900E484B4 /* NSImage+DM.m */,
-				9E5D6F742091EA5A00E484B4 /* LLImageCompressManager.h */,
-				9E5D6F752091EA5A00E484B4 /* LLImageCompressManager.m */,
-				9E5D6F702091D4F200E484B4 /* LLImageCompressOperation.h */,
-				9E5D6F712091D4F200E484B4 /* LLImageCompressOperation.m */,
-				9E5D6F6A2091A71A00E484B4 /* ArtImageCompressUtil.h */,
-				9E5D6F6B2091A71A00E484B4 /* ArtImageCompressUtil.m */,
 				9ED3130B20903513009BFA8D /* Assets.xcassets */,
 				9ED3130D20903513009BFA8D /* Main.storyboard */,
 				9ED3131020903513009BFA8D /* Info.plist */,
@@ -210,10 +195,10 @@
 				9ED3130C20903513009BFA8D /* Assets.xcassets in Resources */,
 				9E5D6F4B2090768400E484B4 /* jpegoptim in Resources */,
 				9ED3130F20903513009BFA8D /* Main.storyboard in Resources */,
+				6B46B2E82099A61200E77FD2 /* pngquant in Resources */,
 				9E5D6F4A2090768400E484B4 /* guetzli in Resources */,
 				9E5D6F3F2090768400E484B4 /* jpegtran in Resources */,
 				9E5D6F422090768400E484B4 /* advpng in Resources */,
-				9E5D6F452090768400E484B4 /* pngquant in Resources */,
 				9E5D6F412090768400E484B4 /* optipng in Resources */,
 				9E5D6F482090768400E484B4 /* zopflipng in Resources */,
 			);
@@ -226,13 +211,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9E5D6F6C2091A71A00E484B4 /* ArtImageCompressUtil.m in Sources */,
-				9E5D6F722091D4F200E484B4 /* LLImageCompressOperation.m in Sources */,
 				9ED3130A20903512009BFA8D /* ViewController.m in Sources */,
 				9ED3131220903513009BFA8D /* main.m in Sources */,
 				9ED3130720903512009BFA8D /* AppDelegate.m in Sources */,
 				9E5D6F6920916EF900E484B4 /* NSImage+DM.m in Sources */,
-				9E5D6F762091EA5A00E484B4 /* LLImageCompressManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

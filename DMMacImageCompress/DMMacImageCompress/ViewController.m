@@ -8,8 +8,7 @@
 
 #import "ViewController.h"
 #import "NSImage+DM.h"
-#import "LLImageCompressOperation.h"
-#import "LLImageCompressManager.h"
+
 
 @interface ViewController()
 @property (nonatomic, strong) NSTask *task;
@@ -53,32 +52,9 @@
         //是否点击open 按钮
         if (result == NSModalResponseOK) {
             NSArray <NSString *>*array = [panel.URLs valueForKeyPath:@"path"];
-            [weakSelf testCompressManager:array];
+            [weakSelf taskPngquant:array.firstObject];
         }
     }];
-}
-
-- (void)testOperation:(NSArray *)array
-{
-    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
-    queue.maxConcurrentOperationCount = 5;
-    [array enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        LLImageCompressOperation *op = [[LLImageCompressOperation alloc] initWithImageAsset:obj maxSize:CGSizeMake(2048, 2048) maxFileSize:20];
-        [op addHandlersForCompleted:^(NSData *data, NSSize size) {
-            NSLog(@"index = %tu,data = %lu,size = %@",idx,data.length,NSStringFromSize(size));
-        }];
-        [queue addOperation:op];
-    }];
-}
-
-- (void)testCompressManager:(NSArray *)array
-{
-    [array enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        [[LLImageCompressManager shared] compressImageWithAsset:obj completed:^(NSData *data, NSSize size) {
-          NSLog(@"index = %tu,data = %lu,size = %@",idx,data.length,NSStringFromSize(size));
-        }];
-    }];
-    
 }
 
 - (void)testOther:(NSArray *)array
@@ -250,6 +226,109 @@
     BOOL ok = [self waitUntilTaskExit];
     
     [commandHandle closeFile];
+    
+    if(!ok){
+        NSLog(@"error");
+    } else {
+        NSLog(@"success");
+        
+        BOOL isExt = [[NSFileManager defaultManager] fileExistsAtPath:[self tempPath].path];
+        if (isExt) {
+            NSLog(@"YES");
+            
+            NSDictionary *orgfileDic = [[NSFileManager defaultManager] attributesOfItemAtPath:filePath error:nil];//获取文件的属性
+            unsigned long long orgsize = [[orgfileDic objectForKey:NSFileSize] longLongValue];
+            
+            NSDictionary *fileDic = [[NSFileManager defaultManager] attributesOfItemAtPath:[self tempPath].path error:nil];//获取文件的属性
+            unsigned long long size = [[fileDic objectForKey:NSFileSize] longLongValue];
+            CGFloat filesize = 1.0*size/1024;
+            NSLog(@"原文件大小:%f ;压缩后文件大小 = %f",orgsize / 1000.,size / 1000.);
+            NSData *data = [NSData dataWithContentsOfURL:[self tempPath]];
+            NSImage *imag = [[NSImage alloc] initWithData:data];
+            NSLog(@"%@",imag);
+        } else {
+            NSLog(@"NO");
+        }
+    }
+}
+
+- (void)taskPngquant:(NSString *)filePath
+{
+    self.task = [NSTask new];
+    
+    NSString *path = [self pathForExecutalbeName:@"pngquant"];
+    
+    NSUInteger maxQuality = MIN(100, 10+20);
+    NSMutableArray* arguments = [NSMutableArray arrayWithObjects:
+                            @"256",
+                            @"--skip-if-larger",
+                            [NSString stringWithFormat:@"-s%d", (int)3],
+                            @"--quality",
+                            [NSString stringWithFormat:@"%d-%d", (int)10, (int)maxQuality],
+                            @"-",
+                            nil];
+    //    NSString *tmpPath = @"/Users/leoliu/Desktop/testExt/compress.png";
+    // clone the current environment
+    NSMutableDictionary *
+    environment =[NSMutableDictionary dictionaryWithDictionary: [[NSProcessInfo processInfo] environment]];
+    
+    // set up for unbuffered I/O
+    environment[@"NSUnbufferedIO"] = @"YES";
+    
+    if ([self.task respondsToSelector:@selector(setQualityOfService:)]) {
+        self.task.qualityOfService = NSQualityOfServiceUtility;
+    }
+    
+    
+    NSLog(@"Launching %@ %@",path,[arguments componentsJoinedByString:@" "]);
+    
+    [self.task setLaunchPath:path];
+    
+    [self.task setArguments:arguments];
+    
+    [self.task setEnvironment:environment];
+    
+    
+    NSError *err = nil;
+    NSFileHandle *fileInputHandle = [NSFileHandle fileHandleForReadingFromURL:[NSURL fileURLWithPath:filePath] error:&err];
+    if (!fileInputHandle) {
+        NSLog(@"Can't read %@ %@", filePath, err);
+        return;
+    }
+    
+    [[NSData new] writeToURL:self.tempPath atomically:NO];
+    NSFileHandle *fileOutputHandle = [NSFileHandle fileHandleForWritingToURL:self.tempPath error:&err];
+    
+    if (!fileOutputHandle) {
+        NSLog(@"Can't create %@ %@", [self tempPath].path, err);
+        return;
+    }
+    
+    
+    NSPipe *commandPipe = [NSPipe pipe];
+    NSFileHandle *commandHandle = [commandPipe fileHandleForReading];
+    
+    [self.task setStandardInput:fileInputHandle];
+    [self.task setStandardOutput:fileOutputHandle];
+    [self.task setStandardError:commandPipe];
+    
+    [self launchTask];
+    [commandHandle readInBackgroundAndNotify];
+    
+    BOOL ok = [self waitUntilTaskExit];
+    
+    [commandHandle closeFile];
+    [fileOutputHandle closeFile];
+    int status = [self.task terminationStatus];
+    // 98/99 == written 24-bit instead (which is fine too, because it applies color profiles)
+    if (status == 99) {
+        NSLog(@"pngquant skipped image due to low quality");
+    } else if (status == 98) {
+        NSLog(@"pngquant skipped image due to poor compression");
+    } else if (status) {
+        NSLog(@"pngquant error %d", status);
+        return ;
+    }
     
     if(!ok){
         NSLog(@"error");
