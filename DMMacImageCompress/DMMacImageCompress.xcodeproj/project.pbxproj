@@ -75,7 +75,6 @@
 				9E5D6F302090768300E484B4 /* advpng */,
 				9E5D6F322090768300E484B4 /* gifsicle */,
 				9E5D6F352090768300E484B4 /* libimagequant.a */,
-				9E5D6F362090768300E484B4 /* zopflipng */,
 				9E5D6F382090768300E484B4 /* guetzli */,
 				9E5D6F392090768300E484B4 /* jpegoptim */,
 			);
@@ -111,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				6B46B2E72099A61200E77FD2 /* pngquant */,
+				9E5D6F362090768300E484B4 /* zopflipng */,
 				9E5D6F272090768300E484B4 /* Debug */,
 				9ED3130520903512009BFA8D /* AppDelegate.h */,
 				9ED3130620903512009BFA8D /* AppDelegate.m */,
